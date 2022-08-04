@@ -15,7 +15,6 @@ from random import randint
 JSON_MIME = 'application/json'
 
 app = Flask(__name__)
-app.add_url_rule('/favicon.ico', redirect_to=url_for('static', filename='favicon.ico'))
 
 DETA_PROJECT_KEY = env.get('DETA_PROJECT_KEY').split("_")
 
