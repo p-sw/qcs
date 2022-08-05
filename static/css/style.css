@@ -92,3 +92,13 @@ ul li {
 .tab-content#about span {
     font-weight: bold;
 }
+
+#copy-result .success {
+    color: #40ff40;
+    font-weight: bold;
+}
+
+#copy-result .error {
+    color: #ff4040;
+    font-weight: bold;
+}

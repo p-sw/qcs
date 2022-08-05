@@ -24,7 +24,13 @@
                     <li class="tab"><button class="tab-btn" id="about-tab" name="about">About</button></li>
                 </ul>
                 <div class="tab-content" id="share">
-                    <button id="share-button" class="action-btn">Share My Copy!</button>
+                    <button id="share-button" class="action-btn">Share My Clip!</button><br>
+                    <div id="encrypt-pass-container">
+                        <label for="use-custom-encrypt">Use password to encrypt</label>
+                        <input type="checkbox" id="use-custom-encrypt"><br>
+                        <label for="encrypt-pass">Password</label>
+                        <input type="password" id="encrypt-pass" placeholder="Password" class="action-input"><br>
+                    </div>
                     <div id="share-result" style="display: none;">
                         Code: <span id="share-code"></span><br>
                         This code is only valid within 1 minute.
@@ -32,9 +38,23 @@
                 </div>
                 <div class="tab-content" id="copy">
                     <input type="text" id="copy-code" class="action-input" placeholder="Input your code here">
-                    <button id="copy-button" class="action-btn">Load My Copy!</button>
+                    <button id="copy-button" class="action-btn">Load My Clip!</button>
+                    <div id="decrypt-pass-container" style="display: none;">
+                        <input type="hidden" id="temp-not-decrypted" value="">
+                        <p>This clip is encrypted. You have to input password to decrypt.</p><br>
+                        <input type="password" id="decrypt-pass" class="action-input" placeholder="Input your password here">
+                        <button id="decrypt-button" class="action-btn">Decrypt & Load</button>
+                    </div>
                     <div id="copy-result" style="display: none;">
-                        Successfully copied.
+                        <div class="success" id="copy-result-success">
+                            Successfully copied!
+                        </div>
+                        <div class="error" id="copy-result-error-code">
+                            Invalid code!
+                        </div>
+                        <div class="error" id="copy-result-error-pass">
+                            Invalid password!
+                        </div>
                     </div>
                 </div>
                 <div class="tab-content" id="about">
@@ -45,6 +65,7 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
         <script src="{{ url_for('static', filename='js/index.js') }}"></script>
         <script>
             tab_switch('share-tab')

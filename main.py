@@ -215,6 +215,7 @@ def index():
 @app.route('/api/putclip', methods=['POST'])
 def put_copy():
     data = str(request.json['putdata'])
+    encrypted = request.json['encrypt']
     obj = DetaReqs(DETA_PROJECT_KEY)
     
     res = obj.fetch()
@@ -232,6 +233,7 @@ def put_copy():
         
     req_data = {
         "data": data,
+        "encrypted": encrypted,
     }
     
     result = obj.put(req_data, key='0'*(6-len(str(key)))+str(key), expire_in=60)
@@ -243,7 +245,7 @@ def get_copy():
     obj = DetaReqs(DETA_PROJECT_KEY)
     
     result = obj.get(key)
-    return result
+    return result or {'error': 'True'}
 
 if __name__ == "__main__":
     app.run()
