@@ -2,12 +2,8 @@ FROM python:3.10.7
 
 WORKDIR /app
 
-COPY . .
+COPY . /app/
 
-ENV VIRTUAL_ENV=/app/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN pip install -r requirements.txt
 
-RUN . venv/bin/activate && pip install -r requirements.txt
-
-CMD . venv/bin/activate && exec gunicorn --bind 0.0.0.0:5001 app:app
+CMD gunicorn --bind 0.0.0.0:5001 app:app
