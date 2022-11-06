@@ -1,1 +1,2 @@
 Flask==2.2.1
+apscheduler==3.9.1
