@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN . venv/bin/activate
-RUN pip install -r requirements.txt
+RUN . venv/bin/activate && pip install -r requirements.txt
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"]
+CMD . venv/bin/activate && gunicorn --bind 0.0.0.0:5001 app:app
