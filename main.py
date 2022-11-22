@@ -5,7 +5,7 @@ import time
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 
-DATABASE_NAME = "db.sqlite3"
+DATABASE_NAME = "db/db.sqlite3"
 
 class Database:
     def __init__(self, name):
