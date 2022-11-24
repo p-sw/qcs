@@ -6,4 +6,4 @@ COPY . /app/
 
 RUN pip install -r requirements.txt
 
-CMD gunicorn main:app --bind 0.0.0.0:5001 --workers 2
+CMD gunicorn main:app --bind 0.0.0.0:5000 --workers 2
