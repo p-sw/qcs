@@ -95,11 +95,12 @@ def put_copy():
     key_decided = False
     while not key_decided:
         key = randint(0, 999999)
-        if Item(key=key).control.exists():
+        strkey = '0'*(6-len(str(key)))+str(key)
+        if Item(key=strkey).control.exists():
             continue
         key_decided = True
 
-    result = Item(key='0'*(6-len(str(key)))+str(key), data=data, encrypted=encrypted).control.save()
+    result = Item(key=strkey, data=data, encrypted=encrypted).control.save()
     return result.to_json()
 
 @app.route('/api/getclip', methods=['POST'])
